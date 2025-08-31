@@ -4,32 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>流萤 AI Demo</title>
+    <style>
+        /* 确保容器和网页本身都占满整个屏幕 */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #chat-container {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 </head>
 <body>
-    <!-- 引入扣子官方的“安装工具” -->
+    <!-- 1. 这是我们为聊天机器人准备的“容器”或“车架” -->
+    <div id="chat-container"></div>
+
+    <!-- 2. 引入扣子官方的“安装工具” -->
     <script src="https://sf-cdn.coze.com/obj/unpkg-cn/coze-web-sdk@latest/dist/iife/index.js"></script>
     
-    <!-- 使用“说明书”来安装和启动引擎 -->
+    <!-- 3. 使用“说明书”来安装和启动引擎，并明确告诉它安装到哪里 -->
     <script>
       new CozeWebSDK.WebChatClient({
+        // 指定要把聊天机器人安装到哪个容器里
+        el: document.getElementById('chat-container'),
+        
         config: {
           bot_id: '7544300284668182566',
         },
-        // 这个 componentProps 部分是让聊天窗口直接显示出来，而不是一个按钮
         componentProps: {
-          title: '流萤 AI',
-          layout: 'pc',
-          width: "100%",
-          height: "100vh", // vh 单位代表占满整个浏览器窗口的高度
-          style: {
-              position: 'fixed',
-              top: 0,
-              right: 0,
-              bottom: 0,
-              left: 0,
-              zIndex: 1000,
-              border: 'none',
-          }
+          title: '与流萤对话',
+          layout: 'pc'
         }
       });
     </script>
