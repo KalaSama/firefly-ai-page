@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>流萤 AI Demo</title>
     <style>
-        /* 确保容器和网页本身都占满整个屏幕 */
         body, html {
             margin: 0;
             padding: 0;
@@ -13,31 +12,34 @@
             height: 100%;
             overflow: hidden;
         }
-        #chat-container {
-            width: 100%;
-            height: 100%;
-        }
     </style>
 </head>
 <body>
-    <!-- 1. 这是我们为聊天机器人准备的“容器”或“车架” -->
-    <div id="chat-container"></div>
-
-    <!-- 2. 引入扣子官方的“安装工具” -->
-    <script src="https://sf-cdn.coze.com/obj/unpkg-cn/coze-web-sdk@latest/dist/iife/index.js"></script>
+    <!-- 引入正确的官方 SDK 脚本 -->
+    <script src="https://lf-cdn.coze.cn/obj/unpkg/flow-platform/chat-app-sdk/1.2.0-beta.10/libs/cn/index.js"></script>
     
-    <!-- 3. 使用“说明书”来安装和启动引擎，并明确告诉它安装到哪里 -->
     <script>
       new CozeWebSDK.WebChatClient({
-        // 指定要把聊天机器人安装到哪个容器里
-        el: document.getElementById('chat-container'),
-        
+        // ===== 基础配置 =====
         config: {
           bot_id: '7544300284668182566',
         },
+        // ===== 外观和布局配置 =====
         componentProps: {
           title: '与流萤对话',
-          layout: 'pc'
+          layout: 'pc',
+          width: "100vw",
+          height: "100vh",
+        },
+        // ===== 身份验证配置（已添加 onRefreshToken）=====
+        auth: {
+          type: 'token',
+          token: 'cztei_hK4dxIhBYUktJ0FalpYAijFnAUoY6oE4kpdPg7tF2UAgx6gNCxlK7jCtuIFYtpGen',
+          // 根据错误提示，这是一个必须提供的函数
+          onRefreshToken: function () {
+            // 在我们的场景下，它只需要返回同一个长期有效的 token 即可
+            return 'cztei_hK4dxIhBYUktJ0FalpYAijFnAUoY6oE4kpdPg7tF2UAgx6gNCxlK7jCtuIFYtpGen';
+          }
         }
       });
     </script>
