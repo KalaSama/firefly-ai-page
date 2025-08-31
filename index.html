@@ -1,24 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>流萤 AI Demo</title>
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden;
-        }
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-    </style>
 </head>
 <body>
-    <iframe src="https://www.coze.cn/chat/7544300284668182566"></iframe>
+    <!-- 引入扣子官方的“安装工具” -->
+    <script src="https://sf-cdn.coze.com/obj/unpkg-cn/coze-web-sdk@latest/dist/iife/index.js"></script>
+    
+    <!-- 使用“说明书”来安装和启动引擎 -->
+    <script>
+      new CozeWebSDK.WebChatClient({
+        config: {
+          bot_id: '7544300284668182566',
+        },
+        // 这个 componentProps 部分是让聊天窗口直接显示出来，而不是一个按钮
+        componentProps: {
+          title: '流萤 AI',
+          layout: 'pc',
+          width: "100%",
+          height: "100vh", // vh 单位代表占满整个浏览器窗口的高度
+          style: {
+              position: 'fixed',
+              top: 0,
+              right: 0,
+              bottom: 0,
+              left: 0,
+              zIndex: 1000,
+              border: 'none',
+          }
+        }
+      });
+    </script>
 </body>
 </html>
