@@ -15,30 +15,26 @@
     </style>
 </head>
 <body>
-    <!-- 引入正确的官方 SDK 脚本 -->
     <script src="https://lf-cdn.coze.cn/obj/unpkg/flow-platform/chat-app-sdk/1.2.0-beta.10/libs/cn/index.js"></script>
     
     <script>
       new CozeWebSDK.WebChatClient({
-        // ===== 基础配置 =====
         config: {
           bot_id: '7544300284668182566',
         },
-        // ===== 外观和布局配置 =====
         componentProps: {
           title: '与流萤对话',
           layout: 'pc',
           width: "100vw",
           height: "100vh",
         },
-        // ===== 身份验证配置（已添加 onRefreshToken）=====
         auth: {
           type: 'token',
-          token: 'cztei_hK4dxIhBYUktJ0FalpYAijFnAUoY6oE4kpdPg7tF2UAgx6gNCxlK7jCtuIFYtpGen',
-          // 根据错误提示，这是一个必须提供的函数
+          // ============ 在这里粘贴你【全新生成】的 pat_ 开头的 token ============
+          token: 'cztei_h5OJSlshEFDVAYaSpXGu8I3qvEpo9tS7ESShFRrpVHq6SDoIjcZ1XQ7YAIj139RAF',
           onRefreshToken: function () {
             // 在我们的场景下，它只需要返回同一个长期有效的 token 即可
-            return 'cztei_hK4dxIhBYUktJ0FalpYAijFnAUoY6oE4kpdPg7tF2UAgx6gNCxlK7jCtuIFYtpGen';
+            return 'cztei_h5OJSlshEFDVAYaSpXGu8I3qvEpo9tS7ESShFRrpVHq6SDoIjcZ1XQ7YAIj139RAF';
           }
         }
       });
